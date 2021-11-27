@@ -6,11 +6,14 @@ import os
 import platform
 import json
 import numpy as np
-#필요한 변수 지정 장소 
-botname = ("플로스/ FLOS")
+
+#필요한 변수 지정 장소
 OScheck = platform.system()
+botname = ("플로스/ FLOS")
+#변수 지정
 회사명_1 = ("더블초코")
 회사명_2 = ("더블민트")
+
 #구동부
 class chatbot(discord.Client):
     async def on_ready(self):
@@ -24,6 +27,7 @@ class chatbot(discord.Client):
             os.system('cls')
             print("[플로스 기동]")
             print()
+            
         elif OScheck == ("Linux") :
             os.system('clear')
             print("[플로스 기동]")
@@ -187,9 +191,11 @@ class chatbot(discord.Client):
                 플래이어_코인1 = json_data['player']['COIN_1']
                 플래이어_코인2 = json_data['player']['COIN_2']
                 결과_1= (int(플래이어자본) - int(전체가격1))
+                
                 if 결과_1 <= -1 :
                     await message.channel.send("자금보다 더 많이 구매하실수 없습니다.")
-                    return 
+                    return
+                
                 else :
                     await message.channel.send("구매 하셨습니다."+" │현재 자금>"+ str(결과_1) )
                     결과_1= (int(플래이어자본) - int(전체가격1))
@@ -226,9 +232,11 @@ class chatbot(discord.Client):
                     플래이어_코인1 = json_data['player']['COIN_1']
                     플래이어_코인2 = json_data['player']['COIN_2']
                     결과_1= (int(플래이어자본) - int(전체가격1))
+                    
                     if 결과_1 <= -1 :
                         await message.channel.send("보유하신 자금보다 더 많이 구매 하실 수 없습니다.")
                         return 
+                    
                     else :
                         await message.channel.send("구매 하셨습니다."+" │현재 자금>"+ str(결과_1) )
                         결과_1= (int(플래이어자본) - int(전체가격1))
@@ -254,6 +262,7 @@ class chatbot(discord.Client):
             msg_l = message.content.split()
             try:
                 판메주식량 = msg_l[2]
+                
             except:
                 await message.channel.send("+판매 <회사명> <주식의 수>")
                 return
@@ -275,6 +284,7 @@ class chatbot(discord.Client):
                 플래이어_코인2 = json_data['player']['COIN_2']
                 결과_1= (int(플래이어자본) + int(전체가격1))
                 주식수 = (int(플래이어2주식1) - int(판메주식량))
+                
                 if 주식수 <= -1 :
                     await message.channel.send("보유하신 주식보다 더 많이 판매 하실 수 없습니다.")
                         
@@ -314,6 +324,7 @@ class chatbot(discord.Client):
                 플래이어_코인2 = json_data['player']['COIN_2']
                 결과_1= (int(플래이어자본) + int(전체가격1))
                 주식수 = (int(플래이어2주식2) - int(판메주식량))
+                
                 if 주식수 <= -1 :
                     await message.channel.send("보유하신 주식보다 더 많이 판매 하실 수 없습니다.")
                         
@@ -338,8 +349,10 @@ class chatbot(discord.Client):
 
         if message.content.startswith("+칭호"):
             msg_l = message.content.split()
+            
             try:
                 판메주식량 = msg_l[2]
+                
             except:
                 embed=discord.Embed(title="상점 명령어 목록", description="개발중", color=0xB700FF)
                 embed.set_author(name=" 더블 초코 칭호 상점")
@@ -353,4 +366,4 @@ class chatbot(discord.Client):
 if __name__ == "__main__":
     client = chatbot()
     # TOKEN 값을 통해 로그인하고 봇을 실행
-    client.run("input TOKEN")
+    client.run("INPUT TOKEN")
