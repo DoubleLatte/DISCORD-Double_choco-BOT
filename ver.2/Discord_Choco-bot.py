@@ -52,7 +52,8 @@ class chatbot(discord.Client):
         if message.content.startswith("=핑"):
             embed = discord.Embed(title = ':stopwatch: 현재 핑', description = str(client.latency)[0:5] + 'ms', color = 0x00ff00)
             await message.channel.send(embed=embed)
-    
+        if message.conrent.startswith("=한강"):
+            embed = dicord.Embed(title = '한강온도',)   
 
 # 프로그램이 실행되면 제일 처음으로 실행되는 함수
 if __name__ == "__main__":
