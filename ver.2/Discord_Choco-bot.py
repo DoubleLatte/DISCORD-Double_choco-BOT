@@ -3,7 +3,7 @@ import discord,time,random,os,platform,json
 import numpy as np
 import os
 import sys
-import  
+import hanriver as han 
 #필요한 변수 지정 장소 
 botname = ("더블 초코")
 OScheck = platform.system()
